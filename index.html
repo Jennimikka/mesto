@@ -10,7 +10,6 @@
   <body class="page">
     <header class="header">
         <img src="/images/logo.svg" alt="логотип сайта" class="header__logo">
-        <p class="header__line"></p>
     </header>
     <main class="content">
         <section class="profile">
@@ -18,7 +17,7 @@
             <img src="/images/cousteau.png" alt="Кусто" class="profile__photo">
             <div class="profile__info">
                <h1 class="profile__title">Жак-Ив Кусто</h1>
-                <button class="profile__button"></button>
+                <button class="profile__button profile__open-popup"></button>
                 <p class="profile__subtitle">Исследователь океана</p>  
             </div>
         </div>
@@ -75,13 +74,13 @@
         </ul>
         </section>
     </main>
-    <section class="popup">        
+    <section class="popup popup__opened">        
         <div class="popup__container">    
           <img src="/images/Close Icon.svg" alt="закрыть окно" class="popup__close">      
           <h2 class="popup__title">Редактировать профиль</h2>
-          <fieldset class="inputs">
-          <input type="text" class="inputs-text" placeholder="Жак-Ив Кусто">
-          <input type="text" class="inputs-text" placeholder="Исследователь океана">
+          <fieldset class="popup__info profile__info">
+          <input type="text" placeholder="Жак-Ив Кусто" class="popup__input popup__input-name profile__name">
+          <input type="text" placeholder="Исследователь океана" class="popup__input popup__input-job profile__job">
         </fieldset>
           <button class="popup__button">Сохранить</button>
         </div>
@@ -90,5 +89,5 @@
     <h2 class="footer__copyright">© 2020 Mesto Russia</h2>
   </footer>
 </body>  
-<script></script>
+<script type="text/javascript" src="./scripts/script.js"></script>
 </html>
