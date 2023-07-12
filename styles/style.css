@@ -351,12 +351,10 @@
   .popup__info {
     max-width: 358px;                                                                   
     font-family: 'Inter';
-    min-height: 27px;
     display: flex;
     padding-top: 54px;
     flex-direction: column;
     gap: 30px;
-    padding-bottom: 48px;
     box-shadow: none;
     border-bottom: #545454;
     border: none;
@@ -365,10 +363,9 @@
     margin: 0;
   }
   @media screen and (max-width: 880px) {
-    .inputs {
+    .popup__info {
         max-width: 238px;
         padding-top: 75px;
-        padding-bottom: 45px;
         gap: 30px;
     }
   }
@@ -431,8 +428,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    padding: 0;
+    padding:0;
     cursor: pointer;
+    margin-top: 18px;
 
   }
   .popup__button:hover {
@@ -444,6 +442,7 @@
         min-width: 238px;
         min-height: 46px;  
         font-size: 14px;
+        margin-top: 15px;
     }
   }
 

@@ -1,25 +1,34 @@
 console.log('скрипт подключен');
 const popup = document.querySelector('.popup');
 const popupOpenButton = document.querySelector('.profile__open-popup');
+
 const popupCloseButton = popup.querySelector('.popup__close');
-let profile = popup.querySelector('.popup__info');
-let name = profile.querySelector('.profile__name');
-let profession = profile.querySelector('.profile__job');
-let nameInput = profile.querySelector('.popup__input-name');
-let jobInput = profile.querySelector('.popup__input-job');
-const popupToggle = function (event){
+let name = document.querySelector('.profile__title');
+let profession = document.querySelector('.profile__subtitle');
+
+const formElement = popup.querySelector('.popup__info');
+let nameInput = document.querySelector('.popup__input-name');
+let professionInput = document.querySelector('.popup__input-job');
+
+const popupToggle = function () {
     popup.classList.toggle('popup__opened');
-    nameInput.value = name.textContent;
-    jobInput.value = job.textContent;
 }
 function handleFormSubmit (evt) {
     evt.preventDefault();
     let nameValue = nameInput.value;
-    let jobValue = jobInput.value;
-    popupToggle();
+    let professionValue = professionInput.value;
+    name.textContent = nameValue;
+    profession.textContent = professionValue;
+    popupToggle()
 }
-popupOpenButton.addEventListener('click', popupToggle);
 
-popupCloseButton.addEventListener('click', popupToggle);
+popupOpenButton.addEventListener('click', function() {
+popupToggle()
+      nameInput.value = name.textContent;
+      professionInput.value = profession.textContent;
+})
+popupCloseButton.addEventListener('click', function() {
+    popupToggle()
+})
 
 formElement.addEventListener('submit', handleFormSubmit); 
