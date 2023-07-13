@@ -1,0 +1,21 @@
+.popup__close {
+    color: #FFF;
+    align-self: flex-end;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: -42px;
+    right: -44px;
+    cursor: pointer;
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 880px) {
+    .popup__close {
+        top: -41px;
+        right: 2px;
+    }
+}

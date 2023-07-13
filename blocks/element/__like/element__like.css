@@ -1,0 +1,20 @@
+.element__like {
+    background-image: url(/images/Group.svg);
+    color: #000;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    margin: 0;
+    align-self: flex-end;
+    border: 0;
+    cursor: pointer;
+}
+
+.element__like:hover {
+    opacity: 0.5;
+}
+
+.element__like:active {
+    background-image: url(/images/Union.svg);
+    color: #000;
+}
