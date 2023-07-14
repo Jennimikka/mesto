@@ -3,7 +3,7 @@
     height: 24px;
     position: absolute;
     right: 0px;
-    top: 10px;
+    top: 20px;
     background-image: url(../../../images/Edit-Button.svg);
     background-color: #000;
     background-repeat: no-repeat;
@@ -14,13 +14,13 @@
 }
 
 .profile__button:hover {
-    opacity: 0.800000011920929;
+    opacity: 0.6;
 }
 
 @media screen and (max-width: 880px) {
     .profile__button {
         right: 19px;
-        top: 31.25px;
+        top: 33.25px;
         width: 18px;
         height: 18px;
     }

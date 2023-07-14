@@ -13,10 +13,8 @@
     .profile__title {
         text-align: center;
         align-self: center;
-        font-family: Inter;
         font-size: 27px;
         font-weight: 500;
-        line-height: normal;
-        max-width: 189 px;
+        line-height: 26px;
     }
 }
