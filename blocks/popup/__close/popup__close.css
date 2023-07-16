@@ -1,5 +1,6 @@
-.popup__close {
-    color: #FFF;
+.popup__close {    
+    background-image: url(../../../images/Close\ Icon.svg);
+    background-color: #000;
     align-self: flex-end;
     width: 32px;
     height: 32px;
@@ -7,6 +8,7 @@
     top: -42px;
     right: -44px;
     cursor: pointer;
+    border: 0;
 }
 
 .popup__close:hover {

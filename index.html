@@ -15,8 +15,10 @@
         <div class="profile__info-container">
           <img src="images/cousteau.png" alt="Кусто" class="profile__photo">
           <div class="profile__info">
-            <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__button profile__open-popup"></button>
+            <div class="profile__info_box">
+               <h1 class="profile__title">Жак-Ив Кусто</h1>
+               <button type="button" class="profile__button profile__open-popup"></button>
+            </div>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
         </div>
@@ -28,42 +30,42 @@
             <img src="images/karachayevsk.png" alt="Карачаевск" class="element__image">
             <div class="element__content">
               <h2 class="element__title">Карачаевск</h2>
-              <button <img src="images/Group.svg" alt="кнопка лайк" class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </li>
           <li class="element">
             <img src="images/gora_elbrus.png" alt="Гора Эльбрус" class="element__image">
             <div class="element__content">
               <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </li>
           <li class="element">
             <img src="images/dombai.png" alt="Домбай" class="element__image">
             <div class="element__content">
               <h2 class="element__title">Домбай</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </li>
           <li class="element">
             <img src="images/Ruskeala.png" alt="Рускеала" class="element__image">
             <div class="element__content">
               <h2 class="element__title">Рускеала</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </li>
           <li class="element">
             <img src="images/Kamchatka.png" alt="Камчатка" class="element__image">
             <div class="element__content">
               <h2 class="element__title">Камчатка</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </li>
           <li class="element">
             <img src="images/vladivostok.png" alt="Владивосток" class="element__image">
             <div class="element__content">
               <h2 class="element__title">Владивосток</h2>
-              <button class="element__like"></button>
+              <button type="button" class="element__like"></button>
             </div>
           </li>
         </ul>
@@ -71,19 +73,17 @@
     </main>
     <section class="popup">
       <div class="popup__container">
-        <img src="images/Close Icon.svg" alt="закрыть окно" class="popup__close">
+        <button type="button" class="popup__close"></button>
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__info" name="popup__info">
-          <input
-            type="text"
-            placeholder="Жак-Ив Кусто"
-            class="popup__input popup__input-name"
+          <input            
+            placeholder="Введите имя"
+            class="popup__input popup__input_type_name"
             name="profile__name"
           />
-          <input
-            type="text"
-            placeholder="Исследователь океана"
-            class="popup__input popup__input-job"
+          <input      
+            placeholder="Введите профессию"
+            class="popup__input popup__input_type_job"
             name="profile__job"
           />
           <button class="popup__button" type="submit">Сохранить</button>
@@ -93,6 +93,6 @@
     <footer class="footer">
       <h2 class="footer__copyright">© 2020 Mesto Russia</h2>
     </footer>
-  </body>
-  <script type="text/javascript" src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
+  </body>  
 </html>

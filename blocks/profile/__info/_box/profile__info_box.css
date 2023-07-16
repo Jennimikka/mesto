@@ -1,0 +1,16 @@
+.profile__info_box {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: last baseline;
+    gap: 18px;
+}
+
+@media screen and (max-width: 880px) {
+    .profile__info_box {
+        justify-content: flex-end;
+        padding-right: 23px;
+        gap: 12px;  
+    }
+}

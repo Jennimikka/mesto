@@ -3,11 +3,10 @@
     padding-left: 30px;
     display: flex;
     flex-direction: column;
-    min-width: 336px;
+    max-width: 336px;
     align-items: baseline;
     text-align: left;
     margin: 0;
-    position: relative;
     gap: 16px;
 }
 
@@ -15,7 +14,7 @@
     .profile__info {
         padding-top: 28.25px;
         padding-left: 0;
-        min-width: 282px;
+        max-width: 282px;
         text-align: center;
         gap: 14px;
         padding-bottom: 31px;

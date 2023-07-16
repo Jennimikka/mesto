@@ -1,9 +1,7 @@
 .profile__button {
     width: 24px;
     height: 24px;
-    position: absolute;
-    right: 0px;
-    top: 20px;
+    padding: 0;
     background-image: url(../../../images/Edit-Button.svg);
     background-color: #000;
     background-repeat: no-repeat;
@@ -19,8 +17,6 @@
 
 @media screen and (max-width: 880px) {
     .profile__button {
-        right: 19px;
-        top: 33.25px;
         width: 18px;
         height: 18px;
     }

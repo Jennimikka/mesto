@@ -7,11 +7,11 @@ let name = document.querySelector('.profile__title');
 let profession = document.querySelector('.profile__subtitle');
 
 const formElement = popup.querySelector('.popup__info');
-let nameInput = document.querySelector('.popup__input-name');
-let professionInput = document.querySelector('.popup__input-job');
+let nameInput = document.querySelector('.popup__input_type_name');
+let professionInput = document.querySelector('.popup__input_type_job');
 
 const popupToggle = function () {
-    popup.classList.toggle('popup__opened');
+    popup.classList.toggle('popup_opened');
 }
 function handleFormSubmit (evt) {
     evt.preventDefault();
