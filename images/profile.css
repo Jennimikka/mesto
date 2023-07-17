@@ -3,13 +3,11 @@
     flex-direction: row;
     justify-content: space-between;
     padding-top: 40.05px;
-   
 }
 
 @media screen and (max-width: 880px) {
     .profile {
         flex-direction: column;
         padding-top: 42.05px;
-        max-width: 282px;
     }
 }

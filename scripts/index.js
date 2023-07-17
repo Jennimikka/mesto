@@ -1,4 +1,3 @@
-console.log('скрипт подключен');
 const popup = document.querySelector('.popup');
 const popupOpenButton = document.querySelector('.profile__open-popup');
 

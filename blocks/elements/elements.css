@@ -1,6 +1,6 @@
 
 .elements {
-    padding: 51.05px 0 0 0;
+    padding: 52.05px 0 0 0;
     margin: 0;
     display: grid;
     max-width: 880px;
@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 880px) {
     .elements {
-        padding-top: 36px;
+        padding-top: 38px;
         max-width: 282px;
         grid-template-columns: repeat(1, 282px);
         grid-template-rows: repeat(6, 361px);

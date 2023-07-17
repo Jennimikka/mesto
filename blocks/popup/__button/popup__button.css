@@ -22,7 +22,7 @@
 
 .popup__button:hover {
     border-radius: 2px;
-    opacity: 0.800000011920929;
+    opacity: .8;
 }
 
 @media screen and (max-width: 880px) {
