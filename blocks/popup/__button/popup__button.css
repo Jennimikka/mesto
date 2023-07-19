@@ -18,10 +18,10 @@
     padding: 0;
     cursor: pointer;
     margin-top: 18px;
+    border-radius: 2px;
 }
 
 .popup__button:hover {
-    border-radius: 2px;
     opacity: .8;
     transition: 2s;
 }

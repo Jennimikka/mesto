@@ -10,6 +10,7 @@
     align-self: center;
     background-repeat: no-repeat;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .profile__add-button:hover {

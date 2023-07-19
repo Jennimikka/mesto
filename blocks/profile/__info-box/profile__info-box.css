@@ -4,7 +4,8 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    gap: 18px;
+    box-sizing: border-box;
+    
 }
 
 @media screen and (max-width: 880px) {
