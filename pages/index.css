@@ -25,10 +25,15 @@
 @import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__close/_add/popup__close_add.css);
+@import url(../blocks/popup/__close/_image/popup__close_image.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__info/popup__info.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__input/_form/popup__input_form.css);
 @import url(../blocks/popup/__button/popup__button.css);
+@import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__container/_image/popup__container_image.css);
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__caption/popup__caption.css);
