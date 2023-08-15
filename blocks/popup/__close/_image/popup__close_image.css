@@ -4,7 +4,7 @@ right: -36px;
 }
 
 @media screen and (max-width: 880px) {
-.popup__close_image {
-right: 0;
-  }
+    .popup__close_image {
+        right: 0;
+    }
 }
