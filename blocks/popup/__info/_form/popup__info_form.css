@@ -1,10 +1,10 @@
-.popup__form {
+.popup__info_form {
     padding-top: 48px;
     gap: 29px;
 }
 
 @media screen and (max-width: 880px) {
-    .popup__form {
+    .popup__info_form {
         padding-top: 76px;
         gap: 29px;
     } 

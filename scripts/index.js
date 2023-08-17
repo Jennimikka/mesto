@@ -1,46 +1,46 @@
-const popup = document.querySelector('.popup');
 const profilePopup = document.querySelector('.popup_type_profile');
-const popupOpenButton = document.querySelector('.profile__open-popup');
-const popupCloseButton = document.querySelector('.popup__close');
-let nameValue = document.querySelector('.profile__title');
-let professionValue = document.querySelector('.profile__subtitle');
-
-const formElement = document.querySelector('.popup__info');
-let nameInput = document.querySelector('.popup__input_type_name');
-let professionInput = document.querySelector('.popup__input_type_job');
-
-const addPopup = document.querySelector('.popup_type_add');
-const popupAddButton = document.querySelector('.profile__add-button'); 
-const addCloseButton = document.querySelector('.popup__close_add'); 
-
-const formElementAdd = document.querySelector('.popup__form');
-let locationInput = document.querySelector('.popup__input_type_location');
-let linkInput = document.querySelector('.popup__input_type_link');
-
-
+const cardPopup = document.querySelector('.popup_type_card');
 const imagePopup = document.querySelector('.popup_type_image'); 
+
+const profilePopupOpenButton = document.querySelector('.profile__open-popup');
+const profilePopupCloseButton = document.querySelector('.popup__close');
+const profileNameValue = document.querySelector('.profile__title');
+const profileProfessionValue = document.querySelector('.profile__subtitle');
+
+const formElementProfile = document.querySelector('.popup__info_profile');
+const profileNameInput = document.querySelector('.popup__input_type_name');
+const profileProfessionInput = document.querySelector('.popup__input_type_job');
+
+
+const popupCardButton = document.querySelector('.profile__add-button'); 
+const cardCloseButton = document.querySelector('.popup__close_card'); 
+
+const formElementCard = document.querySelector('.popup__info_form');
+const cardLocationInput = document.querySelector('.popup__input_type_location');
+const cardLinkInput = document.querySelector('.popup__input_type_link');
+
 const popupImg = imagePopup.querySelector('.popup__img');
 const popupCaption = imagePopup.querySelector('.popup__caption');
 
 function handleFormProfileSubmit (evt) {
   evt.preventDefault();
-  nameValue.textContent = nameInput.value;
-  professionValue.textContent = professionInput.value;
+  profileNameValue.textContent = profileNameInput.value;
+  profileProfessionValue.textContent = profileProfessionInput.value;
   closePopup(profilePopup)
 }
-formElement.addEventListener('submit', handleFormProfileSubmit)
+formElementProfile.addEventListener('submit', handleFormProfileSubmit)
 
-function handleFormAddSubmit (evt) {
+function handleFormCardSubmit (evt) {
   evt.preventDefault();
   const newItem = {};
-  newItem.name = locationInput.value;  
-  newItem.link = linkInput.value;
+  newItem.name = cardLocationInput.value;  
+  newItem.link = cardLinkInput.value;
   const addNewItem = createElByTemplate(newItem);
   containerEl.prepend(addNewItem);
-  closePopup(addPopup)
+  closePopup(cardPopup)
   evt.target.reset();
 }
-formElementAdd.addEventListener('submit', handleFormAddSubmit)
+formElementCard.addEventListener('submit', handleFormCardSubmit)
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');  
@@ -50,15 +50,15 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');  
 }
 
-  popupOpenButton.addEventListener('click', () => {
+  profilePopupOpenButton.addEventListener('click', () => {
     openPopup(profilePopup)
-    nameInput.value = nameValue.textContent;
-    professionInput.value = professionValue.textContent;
+    profileNameInput.value = profileNameValue.textContent;
+    profileProfessionInput.value = profileProfessionValue.textContent;
    
     })
 
-popupAddButton.addEventListener('click', () => {
-openPopup(addPopup)
+popupCardButton.addEventListener('click', () => {
+openPopup(cardPopup)
 
   })
 
@@ -115,8 +115,8 @@ closeButtons.forEach((item) => {
   }); 
 
   const deleteBtn = el.querySelector('.element__delete');
-  function removeItem (el) {
-  el.target.parentNode.remove();
+  function removeItem (evt) {
+  evt.target.closest('.element').remove();
   } 
   deleteBtn.addEventListener ('click', removeItem);
   
@@ -137,7 +137,7 @@ closeButtons.forEach((item) => {
   });
      
   }; 
-  render (items);
+  render ();
   
 
 
