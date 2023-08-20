@@ -71,6 +71,15 @@ closeButtons.forEach((item) => {
     });
   });
 
+  const closeOverlay = document.querySelectorAll('.popup__overlay');
+closeOverlay.forEach((item) => {
+  const popup = item.closest('.popup');
+  item.addEventListener('click', ()=>{
+  closePopup(popup)
+  
+    });
+  });
+
   const items = [
     {
       name: 'Карачаевск',
@@ -97,7 +106,6 @@ closeButtons.forEach((item) => {
       link: 'https://webpulse.imgsmail.ru/imgpreview?mb=webpulse&key=pulse_cabinet-image-5f590f63-ade4-421d-ac35-48e328c50e7f'
     }
   ];   
-
 
   const containerEl = document.querySelector('.elements');
   const template = document.querySelector('.element-template').content; 
@@ -138,6 +146,7 @@ closeButtons.forEach((item) => {
      
   }; 
   render ();
+  
   
 
 

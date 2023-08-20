@@ -1,0 +1,33 @@
+.popup__input-error {
+        color: rgba(255, 0, 0, 1);
+        max-width: 358px;
+        flex-direction: column;
+        height: 14px;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;        
+        margin-top: 33px;      
+        display: flex;
+        flex-wrap: wrap;
+        display: none;
+        text-align: start;
+        position: absolute;
+        
+        
+    }
+   
+.popup__input_type_error + .popup__input-error {
+    display: block;
+ 
+  }  
+
+.popup__input-error:last-of-type {
+    margin-top: 90px;
+  }
+    
+    @media screen and (max-width: 880px) {
+        .popup__input-error {
+            max-width: 238px;
+        }
+    }
