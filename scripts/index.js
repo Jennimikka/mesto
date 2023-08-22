@@ -22,6 +22,8 @@ const cardLinkInput = document.querySelector('.popup__input_type_link');
 const popupImg = imagePopup.querySelector('.popup__img');
 const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 
+let currentOpenPopup = null;
+
 function handleFormProfileSubmit(evt) {
     evt.preventDefault();
     profileNameValue.textContent = profileNameInput.value;
@@ -44,11 +46,20 @@ function handleFormCardSubmit(evt) {
 
 formElementCard.addEventListener('submit', handleFormCardSubmit)
 
+const keydownWithOpenPopup = (evt) => {
+    if (evt.key === "Escape") {
+        closePopup(currentOpenPopup);
+    }
+}
+
 function openPopup(popup) {
+    currentOpenPopup = popup;
+    document.addEventListener("keydown", keydownWithOpenPopup);
     popup.classList.add('popup_opened');
 }
 
 function closePopup(popup) {
+    document.removeEventListener("keydown", keydownWithOpenPopup);
     popup.classList.remove('popup_opened');
 }
 
@@ -77,14 +88,6 @@ closeOverlay.forEach((item) => {
     item.addEventListener('click', () => {
         closePopup(popup)
     });
-});
-
-document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-        closePopup(profilePopup);
-        closePopup(cardPopup);
-        closePopup(imagePopup);
-    }
 });
 
 const items = [{
