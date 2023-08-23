@@ -1,55 +1,61 @@
-let validateSetting = {};
-
-const setButtonForm = (input) => {
-    const form = input.closest(validateSetting.formSelector);
-    const btnElement = form.querySelector(validateSetting.submitButtonSelector);
+const setButtonForm = (input, formSelector, submitButtonSelector, inactiveButtonClass) => {
+    const form = input.closest(formSelector);
+    const btnElement = form.querySelector(submitButtonSelector);
     if (form.checkValidity()) {
-        btnElement.classList.remove(validateSetting.inactiveButtonClass)
+        btnElement.classList.remove(inactiveButtonClass)
         btnElement.removeAttribute('disabled');
     } else {
-        btnElement.classList.add(validateSetting.inactiveButtonClass)
+        btnElement.classList.add(inactiveButtonClass)
         btnElement.setAttribute('disabled', true);
     }
 };
 
 // Находим элемент ошибки внутри самой функции
-const showInputError = (input) => {
-    input.classList.add(validateSetting.inputErrorClass);
+const showInputError = (input, errorClass) => {
+    input.classList.add(errorClass);
     input.nextElementSibling.textContent = input.validationMessage;    
 }
 
 // находим элемент ошибки
-const hideInputError = (input) => {
-    input.classList.remove(validateSetting.inputErrorClass);
+const hideInputError = (input, errorClass) => {
+    input.classList.remove(errorClass);
     input.nextElementSibling.textContent = ''; 
 }
 
-const checkInputValidity = (input) => {
+const checkInputValidity = (input, inputErrorClass) => {
     if (!input.validity.valid) {
-        showInputError(input);
+        showInputError(input, inputErrorClass);
     } else {
-        hideInputError(input);
+        hideInputError(input, inputErrorClass);
     }
 }
 // устанавливаем прослушиватель событий
-const setEventListeners = (form) => {
-    const inputList = Array.from(form.querySelectorAll(validateSetting.inputSelector))
-    const btnElement = form.querySelector(validateSetting.submitButtonSelector)
+const setEventListeners = (form, setting) => {
+    const inputList = Array.from(form.querySelectorAll(setting.inputSelector))
     inputList.forEach((input) => {
         input.addEventListener('input', () => {
-            checkInputValidity(input);
-            setButtonForm(input)
+            checkInputValidity(input, setting.inputErrorClass);
+            setButtonForm(input, setting.formSelector, setting.submitButtonSelector, setting.inactiveButtonClass);
         });
     });
+    form.addEventListener('reset', (e) => {
+        let lastInput = null;
+        inputList.forEach((input) => {
+            lastInput = input;
+            hideInputError(input, setting.inputErrorClass);
+        });
+        setTimeout(()=>{
+            setButtonForm(lastInput, setting.formSelector, setting.submitButtonSelector, setting.inactiveButtonClass);
+        }, 10);
+    })
 };
 
 const enableValidation = function(setting) {
-    validateSetting = setting;
     const formList = Array.from(
-        document.querySelectorAll(validateSetting.formSelector)
+        document.querySelectorAll(setting.formSelector)
     );
     formList.forEach((form) => {
-        setEventListeners(form, validateSetting)
+        setEventListeners(form, setting)
     })
 }
 

@@ -41,7 +41,6 @@ function handleFormCardSubmit(evt) {
     containerEl.prepend(addNewItem);
     closePopup(cardPopup)
     evt.target.reset();
-    setButtonForm(cardLinkInput)
 }
 
 formElementCard.addEventListener('submit', handleFormCardSubmit)
