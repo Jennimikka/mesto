@@ -1,3 +1,7 @@
+import { Card } from "./Card/Card.js";
+import { items } from "./items/items.js";
+
+
 const profilePopup = document.querySelector('.popup_type_profile');
 const cardPopup = document.querySelector('.popup_type_card');
 const imagePopup = document.querySelector('.popup_type_image');
@@ -22,6 +26,7 @@ const cardLinkInput = document.querySelector('.popup__input_type_link');
 const popupImg = imagePopup.querySelector('.popup__img');
 const imagePopupCaption = imagePopup.querySelector('.popup__caption');
 
+
 let currentOpenPopup = null;
 
 function handleFormProfileSubmit(evt) {
@@ -35,10 +40,11 @@ formElementProfile.addEventListener('submit', handleFormProfileSubmit)
 function handleFormCardSubmit(evt) {
     evt.preventDefault();
     const newItem = {};
-    newItem.name = cardLocationInput.value;
+    newItem.name = cardLocationInput.value; 
     newItem.link = cardLinkInput.value;
-    const addNewItem = createElByTemplate(newItem);
-    containerEl.prepend(addNewItem);
+    const card = new Card(newItem, '.element-template');
+    const cardEl = card.generateCard();
+    containerEl.prepend(cardEl);
     closePopup(cardPopup)
     evt.target.reset();
 }
@@ -89,66 +95,20 @@ closeOverlay.forEach((item) => {
     });
 });
 
-const items = [{
-        name: 'Карачаевск',
-        link: 'https://images.unsplash.com/photo-1588584922681-745a2223f72c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8JUQwJUJBJUQwJUIwJUQxJTgwJUQwJUIwJUQxJTg3JUQwJUIwJUQwJUI1JUQwJUIyJUQxJTgxJUQwJUJBfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60'
-    },
-    {
-        name: 'Гора Эльбрус',
-        link: 'https://wikiway.com/upload/resize_cache/iblock/902/500_330_2/Elbrus-na-zakate.jpg'
-    },
-    {
-        name: 'Домбай',
-        link: 'https://turvopros.com/wp-content/uploads/2022/10/dombai-kanatka.jpg'
-    },
-    {
-        name: 'Рускеала',
-        link: 'https://avatars.mds.yandex.net/get-altay/1371862/2a000001655d39498bbc93fbabd8e526d6e0/XXXL'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://avatars.dzeninfra.ru/get-zen_doc/1921148/pub_5ee9a9472ab5e326049535f2_5ee9aa19987ef673f1bd01af/scale_1200'
-    },
-    {
-        name: 'Владивосток',
-        link: 'https://webpulse.imgsmail.ru/imgpreview?mb=webpulse&key=pulse_cabinet-image-5f590f63-ade4-421d-ac35-48e328c50e7f'
-    }
-];
+
 
 const containerEl = document.querySelector('.elements');
 const template = document.querySelector('.element-template').content;
 
-const createElByTemplate = (item) => {
-    const el = template.querySelector('.element').cloneNode(true);
-    const elTitle = el.querySelector('.element__title');
-    elTitle.textContent = item.name;
-    const elImg = el.querySelector('.element__image');
-    elImg.src = item.link;
-    elImg.alt = item.name;
-    const elLike = el.querySelector('.element__like');
-    elLike.addEventListener('click', function (evt) {
-        evt.target.classList.toggle('element__like_active')
-    });
 
-    const deleteBtn = el.querySelector('.element__delete');
-
-    function removeItem(evt) {
-        evt.target.closest('.element').remove();
-    }
-    deleteBtn.addEventListener('click', removeItem);
-
-    elImg.addEventListener('click', () => {
-        openPopup(imagePopup)
-        popupImg.src = elImg.src;
-        imagePopupCaption.textContent = elTitle.textContent;
-        popupImg.alt = elImg.alt;
-    });
-    return el;
-};
 
 const render = () => {
     items.forEach((item) => {
-        containerEl.append(createElByTemplate(item));
+    const card = new Card(item, '.element-template');
+    const cardEl = card.generateCard();
+    containerEl.append(cardEl);
     });
 };
 render();
+        
+export { openPopup, imagePopup, popupImg, imagePopupCaption }
