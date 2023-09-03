@@ -1,13 +1,12 @@
 
 export class FormValidator {
-    constructor(setting, form) {
+    constructor(form, setting) {
         this._form = form;
         this._formSelector = setting.formSelector;
         this._inputSelector = setting.inputSelector;
         this._submitButtonSelector = setting.submitButtonSelector;
         this._inactiveButtonClass = setting.inactiveButtonClass;
         this._inputErrorClass = setting.inputErrorClass;
-        this._errorClass = setting.errorClass;
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
         this._buttonElement = this._form.querySelector(this._submitButtonSelector);
         
@@ -33,21 +32,21 @@ export class FormValidator {
 
     // Находим элемент ошибки внутри самой функции
     _showInputError = (input) => {
-        input.classList.add(this._errorClass);
+        input.classList.add(this._inputErrorClass);
         input.nextElementSibling.textContent = input.validationMessage;
     }
 
     // находим элемент ошибки
     _hideInputError = (input) => {
-        input.classList.remove(this._errorClass);
+        input.classList.remove(this._inputErrorClass);
         input.nextElementSibling.textContent = '';
     }
 
     _checkInputValidity = (input) => {
         if (!input.validity.valid) {
-            this._showInputError(input, this._errorClass);
+            this._showInputError(input, this._inputErrorClass);
         } else {
-            this._hideInputError(input, this._errorClass);
+            this._hideInputError(input, this._inputErrorClass);
         }
     }
    
@@ -77,7 +76,7 @@ export class FormValidator {
         this._form.addEventListener('submit', (evt) => {
           evt.preventDefault();
         });
-        this.setEventListener();  
+        this.setEventListeners();  
       };    
     }
     
