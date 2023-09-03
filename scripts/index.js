@@ -1,10 +1,13 @@
 import { Card } from "./Card/Card.js";
 import { items } from "./items/items.js";
-
+import { FormValidator } from "./FormValidator/FormValidator.js";
+import { validateSetting } from "./validate.js";
+ 
 
 const profilePopup = document.querySelector('.popup_type_profile');
 const cardPopup = document.querySelector('.popup_type_card');
 const imagePopup = document.querySelector('.popup_type_image');
+
 
 const profilePopupOpenButton = document.querySelector('.profile__open-popup');
 const profilePopupCloseButton = document.querySelector('.popup__close');
@@ -50,6 +53,8 @@ function handleFormCardSubmit(evt) {
 }
 
 formElementCard.addEventListener('submit', handleFormCardSubmit)
+
+
 
 const keydownWithOpenPopup = (evt) => {
     if (evt.key === "Escape") {
@@ -109,6 +114,20 @@ const render = () => {
     containerEl.append(cardEl);
     });
 };
+
+const formList = document.querySelectorAll('.popup__info');
+
+    formList.forEach((form) => {
+        const formValidator = new FormValidator(form, validateSetting);
+        formValidator.enableValidation()
+    })
+
+
+ 
+
+  
 render();
+
+
         
 export { openPopup, imagePopup, popupImg, imagePopupCaption }
