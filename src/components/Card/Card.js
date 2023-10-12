@@ -3,7 +3,7 @@ import { popupImg, imagePopupCaption } from "../../utils/constants.js";
 
 
 export class Card {   
-        constructor(data, templateSelector, {handleCardClick}) {
+        constructor(data, templateSelector, handleCardClick) {
             this._name = data.name;
             this._link = data.link;
             this._templateSelector = templateSelector;
@@ -39,7 +39,7 @@ export class Card {
                this._likeCard() 
             });
             this._image.addEventListener('click', () => {
-                this._handleCardClick();
+                this._handleCardClick(this._name, this._link);
             })
             this._el.querySelector('.element__title').textContent = this._name;
             this._image.src = this._link;

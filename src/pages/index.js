@@ -6,7 +6,7 @@ import { Section } from "../components/Section/Section.js";
 import { PopupWithForm } from "../components/PopupWithForm/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage/PopupWithImage.js";
-import { popupCardButton, cardLocationInput, cardLinkInput, profilePopupOpenButton, profileNameInput, profileProfessionInput, profileProfessionValue, profileNameValue, popup } from "../utils/constants.js";
+import { popupCardButton, cardLocationInput, cardLinkInput, profilePopupOpenButton, profileNameInput, profileProfessionInput, profileProfessionValue, profileNameValue, popup, popupImg, imagePopupCaption } from "../utils/constants.js";
 
 const userInfo = new UserInfo ({userNaneSelector: '.profile__title', userProfessionSelector: '.profile__subtitle'});
 
@@ -29,14 +29,17 @@ profilePopup.setEventListeners()
 
 const imagePopup = new PopupWithImage('.popup_type_image')
 
+function handleCardClick (name, link) {
+   
+    imagePopup.open(link, name)
+}
+
 const cardPopup = new PopupWithForm('.popup_type_card',handleFormCardSubmit)
 function handleFormCardSubmit(evt) {
     const newItem = {};
     newItem.name = cardLocationInput.value; 
     newItem.link = cardLinkInput.value;
-    const card = new Card(newItem, '.element-template',{handleCardClick: () => {
-        imagePopup.open(newItem.link, newItem.name)
-    }});
+    const card = new Card(newItem, '.element-template', {handleCardClick});
     const cardEl = card.generateCard();
     containerEl.prepend(cardEl);
     cardPopup.close()
@@ -86,9 +89,7 @@ const template = document.querySelector('.element-template').content;
 
 const render = () => {
     items.forEach((item) => {
-    const card = new Card(item, '.element-template', {handleCardClick: () => {
-        imagePopup.open(item.link, item.name)
-    }});
+    const card = new Card(item, '.element-template', {handleCardClick});
     const cardEl = card.generateCard();
     containerEl.append(cardEl);
     

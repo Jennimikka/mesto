@@ -17,9 +17,7 @@ export class Section {
         data.forEach((item) => {
           this._renderer(item);
         })
-
-    }
-    
+    }    
 }
 
 
