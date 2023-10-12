@@ -25,9 +25,6 @@ export class Card {
         _likeCard() {
             this._el.querySelector('.element__like').classList.toggle('element__like_active');
         };
-        
-       
-        
 
         generateCard() {
             this._el = this._getTemplate();

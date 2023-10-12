@@ -39,7 +39,7 @@ function handleFormCardSubmit(evt) {
     const newItem = {};
     newItem.name = cardLocationInput.value; 
     newItem.link = cardLinkInput.value;
-    const card = new Card(newItem, '.element-template', {handleCardClick});
+    const card = new Card(newItem, '.element-template', handleCardClick);
     const cardEl = card.generateCard();
     containerEl.prepend(cardEl);
     cardPopup.close()
@@ -89,7 +89,7 @@ const template = document.querySelector('.element-template').content;
 
 const render = () => {
     items.forEach((item) => {
-    const card = new Card(item, '.element-template', {handleCardClick});
+    const card = new Card(item, '.element-template', handleCardClick);
     const cardEl = card.generateCard();
     containerEl.append(cardEl);
     
