@@ -45,13 +45,13 @@ const cardLinkInput = document.querySelector('.popup__input_type_link');
 
  
 
-const popupImg = imagePopup.querySelector('.popup__img'); 
+const popupImg = document.querySelector('.popup__img'); 
 
-const imagePopupCaption = imagePopup.querySelector('.popup__caption'); 
+const imagePopupCaption = document.querySelector('.popup__caption'); 
 
 const cardEl = document.querySelector('.element'); 
 
-const userInfo = new UserInfo ({userNaneSelector: '.profile__title', userProfessionSelector: '.profile__subtitle'});
+const userInfo = new UserInfo ({userNameSelector: '.profile__title', userProfessionSelector: '.profile__subtitle'});
 
 const section = new Section({
     renderer: (item) => {
@@ -68,11 +68,12 @@ function createCard(item, selector){
         }
       })
 }
-const profilePopup = new PopupWithForm('.popup_type_profile',handleFormProfileSubmit)
+const profilePopup = new PopupWithForm('.popup_type_profile',handleFormProfileSubmit(data))
 
 function handleFormProfileSubmit(data) {
     userInfo.setUserInfo(data)
     profilePopup.close()
+    
 }
  
 profilePopup.setEventListeners()
@@ -100,7 +101,7 @@ cardPopup.setEventListeners()
 
 
 profilePopupOpenButton.addEventListener('click', () => {
-    const userData = userInfo.getUserInfo;
+    const userData = userInfo.getUserInfo();
     profileNameInput.value = userData.name;
     profileProfessionInput.value = userData.profession;
     profilePopup.open()
@@ -130,7 +131,7 @@ const containerEl = document.querySelector('.elements');
 const template = document.querySelector('.element-template').content;
 
 
-console.log(render)
+
 imagePopup.setEventListeners()
 
 
@@ -140,7 +141,7 @@ imagePopup.setEventListeners()
         formValidator.enableValidation()
     })
 
-render()
+
  
 
   

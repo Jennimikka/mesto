@@ -8,7 +8,7 @@ export class FormValidator {
         this._inactiveButtonClass = setting.inactiveButtonClass;
         this._inputErrorClass = setting.inputErrorClass;
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-        this._buttonElement = this._form.querySelector(this._submitButtonSelector);
+        this._btnElement = this._form.querySelector(this._submitButtonSelector);
         
      
     };
@@ -48,7 +48,7 @@ export class FormValidator {
    
     // устанавливаем прослушиватель событий
     setEventListeners = () => {
-        inputList.forEach((input) => {
+        this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
                 this._checkInputValidity(input);
                 this._setButtonForm();
@@ -58,7 +58,7 @@ export class FormValidator {
         
         this._form.addEventListener('reset', (e) => {
             let lastInput = null;
-            inputList.forEach((input) => {
+            this._inputList.forEach((input) => {
                 lastInput = input;
                 this._hideInputError(input, this._inputErrorClass);
             });
