@@ -67,8 +67,9 @@ function createCard(item, selector){
           imagePopup.open(card.link, card.name);
         }
       })
+      return card.generateCard();
 }
-const profilePopup = new PopupWithForm('.popup_type_profile',handleFormProfileSubmit(data))
+const profilePopup = new PopupWithForm('.popup_type_profile',handleFormProfileSubmit)
 
 function handleFormProfileSubmit(data) {
     userInfo.setUserInfo(data)
@@ -130,7 +131,14 @@ const closeOverlay = document.querySelectorAll('.popup__overlay');
 const containerEl = document.querySelector('.elements');
 const template = document.querySelector('.element-template').content;
 
-
+ 
+    items.forEach((item) => { 
+        const cardList = new Section(createCard(item, '.element-template'));
+        cardList.renderItems()
+        
+       
+          })
+           
 
 imagePopup.setEventListeners()
 
@@ -139,6 +147,7 @@ imagePopup.setEventListeners()
     formList.forEach((form) => {
         const formValidator = new FormValidator(form, validateSetting);
         formValidator.enableValidation()
+        
     })
 
 
