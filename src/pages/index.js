@@ -7,11 +7,53 @@ import { Section } from "../components/Section/Section.js";
 import { PopupWithForm } from "../components/PopupWithForm/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo/UserInfo.js";
 import { PopupWithImage } from "../components/PopupWithImage/PopupWithImage.js";
-import { popupCardButton, cardLocationInput, cardLinkInput, profilePopupOpenButton, profileNameInput, profileProfessionInput, profileProfessionValue, profileNameValue, popup, popupImg, imagePopupCaption } from "../utils/constants.js";
+
+const formList = document.querySelectorAll('.popup__info'); 
+
+const popup = document.querySelector('.popup'); 
+
+ 
+
+const profilePopupOpenButton = document.querySelector('.profile__open-popup'); 
+
+const profilePopupCloseButton = document.querySelector('.popup__close'); 
+
+const profileNameValue = document.querySelector('.profile__title'); 
+
+const profileProfessionValue = document.querySelector('.profile__subtitle'); 
+
+ 
+
+const formElementProfile = document.querySelector('.popup__info_profile'); 
+
+const profileNameInput = document.querySelector('.popup__input_type_name'); 
+
+const profileProfessionInput = document.querySelector('.popup__input_type_job'); 
+
+
+const popupCardButton = document.querySelector('.profile__add-button'); 
+
+const cardCloseButton = document.querySelector('.popup__close_card'); 
+
+ 
+
+const formElementCard = document.querySelector('.popup__info_form'); 
+
+const cardLocationInput = document.querySelector('.popup__input_type_location'); 
+
+const cardLinkInput = document.querySelector('.popup__input_type_link'); 
+
+ 
+
+const popupImg = imagePopup.querySelector('.popup__img'); 
+
+const imagePopupCaption = imagePopup.querySelector('.popup__caption'); 
+
+const cardEl = document.querySelector('.element'); 
 
 const userInfo = new UserInfo ({userNaneSelector: '.profile__title', userProfessionSelector: '.profile__subtitle'});
 
-let section = new Section({
+const section = new Section({
     renderer: (item) => {
         section.addItem(createCard(item, '.element-template'));
       }
@@ -19,13 +61,20 @@ let section = new Section({
     '.elements' 
 );
 
+function createCard(item, selector){
+    const card = new Card (item, selector, 
+      {handleCardClick: () => {
+          imagePopup.open(card.link, card.name);
+        }
+      })
+}
 const profilePopup = new PopupWithForm('.popup_type_profile',handleFormProfileSubmit)
 
-function handleFormProfileSubmit(evt) {
-    profileNameValue.textContent = profileNameInput.value;
-    profileProfessionValue.textContent = profileProfessionInput.value;
+function handleFormProfileSubmit(data) {
+    userInfo.setUserInfo(data)
     profilePopup.close()
 }
+ 
 profilePopup.setEventListeners()
 
 const imagePopup = new PopupWithImage('.popup_type_image')
@@ -36,13 +85,12 @@ function handleCardClick (name, link) {
 }
 
 const cardPopup = new PopupWithForm('.popup_type_card',handleFormCardSubmit)
-function handleFormCardSubmit(evt) {
+function handleFormCardSubmit() {
     const newItem = {};
     newItem.name = cardLocationInput.value; 
     newItem.link = cardLinkInput.value;
-    const card = new Card(newItem, '.element-template', handleCardClick);
-    const cardEl = card.generateCard();
-    containerEl.prepend(cardEl);
+    section.addNewItem(createCard(newItem, '.element-template', handleCardClick));
+
     cardPopup.close()
     
     
@@ -52,11 +100,11 @@ cardPopup.setEventListeners()
 
 
 profilePopupOpenButton.addEventListener('click', () => {
+    const userData = userInfo.getUserInfo;
+    profileNameInput.value = userData.name;
+    profileProfessionInput.value = userData.profession;
     profilePopup.open()
-    profileNameInput.value = profileNameValue.textContent;
-    profileProfessionInput.value = profileProfessionValue.textContent;
-
-})
+}) 
 
 popupCardButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -72,12 +120,7 @@ closeButtons.forEach((item) => {
 });
 
 const closeOverlay = document.querySelectorAll('.popup__overlay');
-closeOverlay.forEach((item) => {
-    const popup = item.closest('.popup');
-    item.addEventListener('click', () => {
-        popup.classList.remove('popup_opened');
-    });
-});
+
 
 
 
@@ -87,21 +130,10 @@ const containerEl = document.querySelector('.elements');
 const template = document.querySelector('.element-template').content;
 
 
-
-const render = () => {
-    items.forEach((item) => {
-    const card = new Card(item, '.element-template', handleCardClick);
-    const cardEl = card.generateCard();
-    containerEl.append(cardEl);
-    
-    });
-    
-};
-
 console.log(render)
 imagePopup.setEventListeners()
 
-const formList = document.querySelectorAll('.popup__info');
+
 
     formList.forEach((form) => {
         const formValidator = new FormValidator(form, validateSetting);

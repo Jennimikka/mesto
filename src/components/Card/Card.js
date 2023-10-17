@@ -1,7 +1,3 @@
-import { imagePopup } from "../../pages/index.js";
-import { popupImg, imagePopupCaption } from "../../utils/constants.js";
-
-
 export class Card {   
         constructor(data, templateSelector, handleCardClick) {
             this._name = data.name;
@@ -40,7 +36,7 @@ export class Card {
             })
             this._el.querySelector('.element__title').textContent = this._name;
             this._image.src = this._link;
-            this._image.name = this._name;
+            this._image.alt = this._name;
 
             return this._el;
 

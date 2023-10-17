@@ -14,19 +14,15 @@ export class FormValidator {
     };
     
     
-    _setButtonForm = (input) => {
-        this._form = input.closest(this._formSelector);
-        this._btnElement = this._form.querySelector(this._submitButtonSelector);
+    _setButtonForm = () => {
         if (this._form.checkValidity()) {
             this._btnElement.classList.remove(this._inactiveButtonClass)
             this._btnElement.removeAttribute('disabled');
         } else {
             this._btnElement.classList.add(this._inactiveButtonClass)
             this._btnElement.setAttribute('disabled', true);
-        }
-
-    
-        
+        }  
+       
 
     };
 
@@ -52,11 +48,10 @@ export class FormValidator {
    
     // устанавливаем прослушиватель событий
     setEventListeners = () => {
-        const inputList = Array.from(this._form.querySelectorAll(this._inputSelector))
         inputList.forEach((input) => {
             input.addEventListener('input', () => {
                 this._checkInputValidity(input);
-                this._setButtonForm(input, this._formSelector, this._submitButtonSelector, this._inactiveButtonClass);
+                this._setButtonForm();
             });
             
         });
