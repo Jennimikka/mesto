@@ -32,6 +32,7 @@ export class Card {
                this._likeCard() 
             });
             this._image.addEventListener('click', () => {
+              console.log(typeof(this._handleCardClick))
                 this._handleCardClick(this._name, this._link);
             })
             this._el.querySelector('.element__title').textContent = this._name;

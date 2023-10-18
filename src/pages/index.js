@@ -50,24 +50,28 @@ const popupImg = document.querySelector('.popup__img');
 const imagePopupCaption = document.querySelector('.popup__caption'); 
 
 const cardEl = document.querySelector('.element'); 
+const closeOverlay = document.querySelectorAll('.popup__overlay');
+
+const containerEl = document.querySelector('.elements');
+const template = document.querySelector('.element-template').content;
 
 const userInfo = new UserInfo ({userNameSelector: '.profile__title', userProfessionSelector: '.profile__subtitle'});
+const imagePopup = new PopupWithImage('.popup_type_image')
 
+function handleCardClick (name, link) {
+   
+    imagePopup.open(link, name)
+}
 const section = new Section({
+    items: items,
     renderer: (item) => {
-        section.addItem(createCard(item, '.element-template'));
-      }
-    },
-    '.elements' 
-);
+        section.addNewItem(createCard(item, '.element-template', handleCardClick))
+    }
+}, '.elements')
 
 function createCard(item, selector){
-    const card = new Card (item, selector, 
-      {handleCardClick: () => {
-          imagePopup.open(card.link, card.name);
-        }
-      })
-      return card.generateCard();
+    const card = new Card (item, selector, handleCardClick)
+      return card.generateCard() 
 }
 const profilePopup = new PopupWithForm('.popup_type_profile',handleFormProfileSubmit)
 
@@ -79,13 +83,6 @@ function handleFormProfileSubmit(data) {
  
 profilePopup.setEventListeners()
 
-const imagePopup = new PopupWithImage('.popup_type_image')
-
-function handleCardClick (name, link) {
-   
-    imagePopup.open(link, name)
-}
-
 const cardPopup = new PopupWithForm('.popup_type_card',handleFormCardSubmit)
 function handleFormCardSubmit() {
     const newItem = {};
@@ -93,8 +90,7 @@ function handleFormCardSubmit() {
     newItem.link = cardLinkInput.value;
     section.addNewItem(createCard(newItem, '.element-template', handleCardClick));
 
-    cardPopup.close()
-    
+    cardPopup.close()    
     
 }
 cardPopup.setEventListeners()
@@ -121,34 +117,17 @@ closeButtons.forEach((item) => {
     });
 });
 
-const closeOverlay = document.querySelectorAll('.popup__overlay');
 
-
-
-
-
-
-const containerEl = document.querySelector('.elements');
-const template = document.querySelector('.element-template').content;
-
- 
-    items.forEach((item) => { 
-        const cardList = new Section(createCard(item, '.element-template'));
-        cardList.renderItems()
-        
-       
-          })
-           
+section.renderItems(items)
 
 imagePopup.setEventListeners()
 
 
 
-    formList.forEach((form) => {
-        const formValidator = new FormValidator(form, validateSetting);
-        formValidator.enableValidation()
-        
-    })
+formList.forEach((form) => {
+    const formValidator = new FormValidator(form, validateSetting);
+    formValidator.enableValidation()
+ })
 
 
  

@@ -22,11 +22,11 @@ export default class Popup {
     }
     
     setEventListeners() {
-        this._popup.addEventListener('click', (evt) => { 
+        this._popup.addEventListener('mouseup', (evt) => { 
             const targetClassList = evt.target.classList; 
-            if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) { 
+            if (targetClassList.contains('popup__close') || targetClassList.contains('popup__overlay')) { 
               this.close(); 
-            };
+            }
         });
     }
 }
