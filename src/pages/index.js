@@ -84,15 +84,10 @@ function handleFormProfileSubmit(data) {
 profilePopup.setEventListeners()
 
 const cardPopup = new PopupWithForm('.popup_type_card',handleFormCardSubmit)
-function handleFormCardSubmit() {
-    const newItem = {};
-    newItem.name = cardLocationInput.value; 
-    newItem.link = cardLinkInput.value;
-    section.addNewItem(createCard(newItem, '.element-template', handleCardClick));
-
-    cardPopup.close()    
-    
-}
+function handleFormCardSubmit(data) {
+    section.addNewItem(createCard(data, '.element-template', handleCardClick));
+    cardPopup.close()        
+} 
 cardPopup.setEventListeners()
 
 
@@ -108,14 +103,6 @@ popupCardButton.addEventListener('click', (e) => {
         e.preventDefault();
         cardPopup.open()
 })
-
-const closeButtons = document.querySelectorAll('popup__close');
-closeButtons.forEach((item) => {
-    const popup = item.closest('.popup');
-    item.addEventListener('click', () => {
-        popup.close()
-    });
-});
 
 
 section.renderItems(items)
